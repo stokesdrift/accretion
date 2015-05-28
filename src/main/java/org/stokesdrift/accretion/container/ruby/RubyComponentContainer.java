@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -160,10 +161,11 @@ public class RubyComponentContainer implements ComponentContainer {
 		// cleanup environment settings
 		config.setNativeEnabled(false);
 
-		Map env = config.getEnvironment();
+		Map env = new HashMap(config.getEnvironment());
 		if (env.containsKey("PATH")) {
 			env.put("PATH", "");
 		}
+		config.setEnvironment(env);
 
 		setLoadPaths(config);
 		return config;
