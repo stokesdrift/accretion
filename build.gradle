@@ -72,17 +72,6 @@ artifacts {
   archives javadocJar, sourcesJar
 }
 
-// test.doFirst {
-//    copy {
-//        from 'build/resources/main/META-INF/beans.xml'
-//        into 'build/classes/main/META-INF/'
-//    }
-//    copy {
-//        from 'build/resources/test/META-INF/beans.xml'
-//        into 'build/classes/test/META-INF/'
-//    }
-// }
-
 signing {
     sign configurations.archives
 }
@@ -104,25 +93,8 @@ def loadProperties(String sourceFileName) {
   }
 }
 
-// task cleanLibs << {
-// new File('lib').delete()
-// }
 
 import org.apache.tools.ant.filters.*
-
-// task copyRequireFile(type: Copy) {
-//  destinationDir = new File('lib')
-//  from "src/main/ruby"
-//  include 'stokesdrift.rb'
-// filter(ConcatFilter, prepend: file('src/include/header.txt'))
-// }
-
-// task copyDependsLibs(type: Copy) {
-//  destinationDir = new File('lib')
-//  from "build/libs"
-//  from configurations.runtime
-//  from "src/main/ruby"
-// }
 
 uploadArchives {
   repositories {
